@@ -13,3 +13,4 @@ yarn-error.log
 *.rar
 *.zip
 /.phpintel
+composer.lock
