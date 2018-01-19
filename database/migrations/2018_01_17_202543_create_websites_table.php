@@ -10,7 +10,7 @@ class CreateWebsitesTable extends Migration {
 		Schema::create('websites', function(Blueprint $table) {
 			$table->engine = 'InnoDB';
 			$table->increments('id');
-			$table->string('name');
+			$table->string('website_name');
 			$table->string('website');
 			$table->unsignedInteger('clinic_id')->nullable();
 			$table->unsignedInteger('profile_id')->nullable();

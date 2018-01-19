@@ -10,14 +10,13 @@ class CreateClinicsTable extends Migration {
 		Schema::create('clinics', function(Blueprint $table) {
 			$table->engine = 'InnoDB';
 			$table->increments('id');
-			
-			$table->string('number');
 			$table->string('name');
+			$table->string('number');
 			$table->integer('device_count')->default('4');
-			$table->unsignedInteger('group_id')->nullable();
 			$table->date('date_opened')->nullable();
 			$table->unsignedInteger('quickbase_id')->nullable();
 			$table->unsignedInteger('quickbase_company')->nullable();
+			$table->unsignedInteger('group_id')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 			 

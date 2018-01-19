@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
             $table->integer('quickbase_company')->unsigned()->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->timestamp('deleted_at')->nullable();
+            $table->softDeletes();
         });
     }
 

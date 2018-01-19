@@ -15,22 +15,17 @@ class CreateProfilesTable extends Migration
 		Schema::create('profiles', function (Blueprint $table) {
 			$table->engine = 'InnoDB';
 			$table->increments('id');
-			$table->unsignedInteger('user_id')->nullable();
 			$table->string('photo')->nullable();
 			$table->string('first_name')->nullable();
 			$table->string('last_name')->nullable();
 			$table->string('uuid')->nullable();
-
 			$table->text('about_me')->nullable();
-			$table->unsignedInteger('website_id')->nullable();
 			$table->string('company')->nullable();
 			$table->string('gender')->nullable();
-
 			$table->string('phone')->nullable();
 			$table->string('mobile')->nullable();
 			$table->string('work')->nullable();
 			$table->string('other')->nullable();
-
 			$table->boolean('is_published')->default(1);
 			$table->boolean('is_active')->default(1);
 			$table->date('dob')->nullable();
@@ -44,6 +39,8 @@ class CreateProfilesTable extends Migration
 			$table->string('google_plus_url')->nullable();
 			$table->string('slug')->nullable();
 			$table->string('display_name')->nullable();
+			$table->unsignedInteger('user_id')->nullable();
+			$table->unsignedInteger('website_id')->nullable();
 			$table->timestamps();
 		 
 		});

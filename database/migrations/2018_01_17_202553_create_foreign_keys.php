@@ -48,11 +48,11 @@
             // 				->onDelete('cascade')
             // 				->onUpdate('cascade');
             // });
-            Schema::table('profiles', function(Blueprint $table) {
-                $table->foreign('website_id')->references('id')->on('websites')
-                    ->onDelete('cascade')
-                    ->onUpdate('cascade');
-            });
+            // Schema::table('profiles', function(Blueprint $table) {
+            //     $table->foreign('website_id')->references('id')->on('websites')
+            //         ->onDelete('cascade')
+            //         ->onUpdate('cascade');
+            // });
         }
 
         public function down()
@@ -81,8 +81,8 @@
             // Schema::table('profiles', function(Blueprint $table) {
             // 	$table->dropForeign('profiles_user_id_foreign');
             // });
-            Schema::table('profiles', function(Blueprint $table) {
-                $table->dropForeign('profiles_website_id_foreign');
-            });
+            // Schema::table('profiles', function(Blueprint $table) {
+            //     $table->dropForeign('profiles_website_id_foreign');
+            // });
         }
     }
