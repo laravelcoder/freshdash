@@ -13,6 +13,8 @@
                    {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'patch']) !!}
 
                         @include('users.fields')
+                        @include('users.profile_fields')
+                        @include('users.submit')
 
                    {!! Form::close() !!}
 
