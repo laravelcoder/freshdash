@@ -42,10 +42,15 @@ Route::get('/r', function ()
     Route::pattern('id', '[0-9]+');
     Route::pattern('slug', '[0-9a-z-_]+');
 
-    Route::resource('datatables', 'DatatablesController', [
-        'anyData'  => 'datatables.data',
-        'getIndex' => 'datatables.index',
-    ]);
+    Route::get('ss', function()
+    {
+
+        $pathToImage = public_path('images/ss/');
+        $ss = \Spatie\Browsershot\Browsershot::url('https://www.affordableprogrammer.com')->fullPage()->save($pathToImage);
+
+       return $ss;
+
+    });
 /*
 |--------------------------------------------------------------------------
 | Web Routes

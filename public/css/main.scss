@@ -5547,7 +5547,7 @@ footer {
 	background-position: center bottom;
 	background-size: cover;
 	bottom: 0;
-	height: 120%;
+	height: 140%;
 	left: 0;
 	opacity: 0.5;
 	position: absolute;
@@ -8715,4 +8715,10 @@ blockquote footer {
 }
 .snd-emjs:hover > a {
 	color: $color_azure_radiance_approx;
+}
+
+
+#login-logo, #register-logo {
+    margin-bottom: 10%;
+    width: 100%;
 }

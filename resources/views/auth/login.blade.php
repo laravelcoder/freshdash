@@ -1,26 +1,27 @@
 @extends('layouts.base')
- 
+
 @section('content')
 
 <div class="panel-content">
     <div class="lgn-wrp grysh">
-        <div class="bg-img" style="background-image: url({!! asset('/images/resource/bg-img1.png') !!});"></div>
+        <div class="bg-img" style="background-image: url({!! asset('/images/DashboardImage.jpg') !!});"></div>
         <div class="lgn-innr">
             <div class="widget lgn-frm">
                 <div class="frm-tl">
+                	<img id="login-logo" src="{!! asset('/images/login_logo.jpg') !!}" alt="lca logo">
                     <h4>Login to Admin</h4>
                     <span>Fill your detail to get in</span>
                 </div>
                 <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
                     <div class="row mrg10">
-          
+
 
 
                         <div class="col-md-12 col-sm-12 col-lg-12 form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-12 control-label">E-Mail Address</label>
 
-                          
+
                                 <input id="email" type="email" class="brd-rd5 form-control" name="email" value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
@@ -28,13 +29,13 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
-                           
+
                         </div>
 
                         <div class="col-md-12 col-sm-12 col-lg-12 form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-12 control-label">Password</label>
 
-                            
+
                                 <input id="password" type="password" class="brd-rd5 form-control" name="password" required>
 
                                 @if ($errors->has('password'))
@@ -42,7 +43,7 @@
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
-                          
+
                         </div>
 
 
@@ -72,7 +73,7 @@
 
                     </div>
                 </form>
-            </div> 
+            </div>
         </div>
         <footer>
           <p>Copyright <a href="#" title="">LCA Dashboard</a> &amp; 2017</p>
