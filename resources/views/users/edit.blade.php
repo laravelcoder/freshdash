@@ -4,7 +4,7 @@
     <div class="pg-tp">
         <i class="ion-cube"></i>
         <div class="pr-tp-inr">
-            <h4>Create User</h4>
+            <h4>Edit User</h4>
             <span></span>
         </div>
     </div><!-- Page Top -->

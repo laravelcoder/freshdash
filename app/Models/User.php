@@ -84,85 +84,92 @@ use App\User as Usermodel;
  */
 class User extends Usermodel
 {
-        use SoftDeletes;
+		use SoftDeletes;
 
-    public $table = 'users';
-    
-    
-    protected $dates = ['deleted_at'];
+	public $table = 'users';
 
-    
-    public $fillable = [
-        'name',
-        'email',
-        'username',
-        'user_visits',
-        'confirmation_code',
-        'confirmed',
-        'admin',
-        'password',
-        'remember_token',
-        'deleted_at',
-        'profile_id'
-    ];
 
-    /**
-     * The attributes that should be casted to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'name' => 'string',
-        'email' => 'string',
-        'username' => 'string',
-        'user_visits' => 'integer',
-        'profile_id' => 'integer',
-        'confirmation_code' => 'string',
-        'confirmed' => 'boolean',
-        'admin' => 'boolean',
-        'password' => 'string',
-        'remember_token' => 'string'
-    ];
+	protected $dates = ['deleted_at'];
 
-    /**
-     * Validation rules
-     *
-     * @var array
-     */
-    public static $rules = [
-        
-    ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     **/
-    public function profile()
+	public $fillable = [
+
+		'name',
+		'email',
+		'username',
+		'user_visits',
+		'confirmation_code',
+		'confirmed',
+		'admin',
+		'password',
+		'remember_token',
+		'deleted_at',
+		'profile_id'
+	];
+
+	/**
+	 * The attributes that should be casted to native types.
+	 *
+	 * @var array
+	 */
+	protected $casts = [
+		'name' => 'string',
+		'email' => 'string',
+		'username' => 'string',
+		'user_visits' => 'integer',
+		'profile_id' => 'integer',
+		'confirmation_code' => 'string',
+		'confirmed' => 'boolean',
+		'admin' => 'boolean',
+		'password' => 'string',
+		'remember_token' => 'string'
+	];
+
+	/**
+	 * Validation rules
+	 *
+	 * @var array
+	 */
+	public static $rules = [
+
+	];
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 **/
+	public function profile()
+	{
+		return $this->hasOne(\App\Models\Profile::class);
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 **/
+	public function userLocation()
+	{
+		return $this->hasMany(App\Models\Location::class);
+	}
+
+	/**
+	 * Generates the value for the User::confirmation_code field. Used to
+	 * activate the user's account.
+	 * @return bool
+	 */
+	// public function generateConfirmationCode()
+	// {
+	// 	$this->attributes['confirmation_code'] = \Hash::make( $this->email . time() );
+	// 	$this->attributes['username'] = studly_case($this->name);
+
+	// 	if( is_null($this->attributes['confirmation_code']) )
+	// 		return false; // failed to create confirmation_code
+	// 	else
+	// 		return true;
+	// }
+
+
+	public function getConfirmationCodeAttribute()
     {
-        return $this->hasOne(\App\Models\Profile::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
-    public function userLocation()
-    {
-        return $this->hasMany('App\Models\Location');
-    }
-
-    /**
-     * Generates the value for the User::confirmation_code field. Used to
-     * activate the user's account.
-     * @return bool
-     */
-    public function generateConfirmationCode()
-    {
-        $this->attributes['confirmation_code'] = \Hash::make( $this->email . time() );
-        $this->attributes['username'] = studly_case($this->name);
-
-        if( is_null($this->attributes['confirmation_code']) )
-            return false; // failed to create confirmation_code
-        else
-            return true;
+        return \Hash::make( $this->email . time() );
     }
 
 

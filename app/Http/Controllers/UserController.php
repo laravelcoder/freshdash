@@ -42,8 +42,8 @@ class UserController extends AppBaseController
         $this->userRepository->pushCriteria(new RequestCriteria($request));
         $users = $this->userRepository->all();
 
-        return $users;
-        // return view('users.index')->with('users', $users);
+        //return $users;
+         return view('users.index')->with('users', $users);
     }
 
     /**
@@ -111,7 +111,7 @@ class UserController extends AppBaseController
             return redirect(route('users.index'));
         }
 
-        return view('users.edit')->with('user', $user);
+        return view('users.edit'compact('user'));
     }
 
     /**

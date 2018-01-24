@@ -9,335 +9,12 @@
     </div>
 </div><!-- Page Top -->
 
- 
-
-{{-- {{ $topreferrers }} --}}
-
-
-{{-- {!! url('/api/tr') !!} --}}
-
-
-{{-- <table style="width: 100%">
-     <thead>
-          <tr>
-               <th>Id</th>
-               <th>Name</th>
-               <th>Category</th>
-               <th>Color</th>
-           </tr>
-     </thead>
-     <tbody id="tbody">
-     </tbody>
-</table> --}}
-
-
-
-{{-- <div id="div1" class="widget pad50-65"> 
-        <div class="widget-title2">
-            <h4>Top Refferers</h4>
-        </div>
-        <table>
-        <thead> 
-            <tr> 
-                <th>Referrer</th> 
-                <th>Page Views</th> 
-            </tr> 
-        </thead>
-        <tbody id="tbody">
-            
-        </tbody>
-        </table>
-</div> --}}
- 
-
-<div class="col-md-6 col-sm-12 col-lg-6">
-    <div id="here" class="widget pad50-65"> 
-            <div class="widget-title2">
-                <h4>Top Refferers</h4>
-            </div>
-
-    </div>
-    <script>
-    var jArr =  {!! $topreferrers !!};
-    var tableData = '<table id="topreferrers" class="table table-inverse">' +
-        '<thead>' +
-        '<tr>' +
-        '<td>Referrer</td>' +
-        '<td>Visits</td>' +
-        '</tr>' +
-        '</thead><tbody>';
-    $.each(jArr, function(index, data) {        
-        tableData += '<tr><td>'+data.url+'</td><td>'+data.pageViews+'</td></tr>';
-
-    });
-    tableData += '</tbody>'
-    $('div#here').append(tableData);
-    // $( "tr" ).filter( ":even" ).css( "background-color", "red" );
-    $('tr').each(function(){
-        if($('td:contains("facebook")', this).length){
-            $(this).addClass('bg-primary');
-        }
-    });
-    $('tr').each(function(){
-        if($('td:contains("google")', this).length){
-            $(this).addClass('bg-success');
-        }
-    });
-    </script>
-</div>
-
- 
-
-
-
-    <div class="col-md-6 col-sm-12 col-lg-6">
-        <div class="widget pad50-65">
-            <div class="widget-title2">
-                <h4>Top Refferers</h4>
-            </div>
-            <table id="topreferrers-new" class="table table-inverse">
-                <thead>
-                    <tr>
-                        <th>Referrer</th>
-                        <th>Page Views</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-            </table>
-            <script>
-             
-        </script>
-        </div>
-
-    </div>
 
 
 
 
-    <div class="col-md-6 col-sm-12 col-lg-6">
-        <div class="widget pad50-65">
-            <div class="widget-title2">
-                <h4>Top Refferers</h4>
-            </div>
-            <table id="topreferrers2" class="table table-inverse">
-                <thead>
-                    <tr>
-                        <th>Referrer</th>
-                        <th>Page Views</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-    </div>
 
 
-
-<div class="col-md-6 col-sm-12 col-lg-6">
-    <div class="widget grd pad50">
-        <h4>Paragraphs</h4>
-        <span>This is the style of Default Paragraphs</span>
-        <p>Potenti elit lectus augue eget iaculis vitae etiam, ullamcorpe massa, fusce ante convallis ante urna molestie vulputate bi um venenatis sit nisl nisi ultricies sed, fames aliquet consec quisque etiam egestas vulputate massa, curabitur tellus ma putate nisi viverra luctus id leo.</p>
-    </div>
-</div>
-
-<div class="col-md-6 col-sm-12 col-lg-6">
-    <div class="widget grd pad50">
-        <h4>Paragraphs</h4>
-        <span>This is the style of Default Paragraphs</span>
-        <p>Potenti elit lectus augue eget iaculis vitae etiam, ullamcorpe massa, fusce ante convallis ante urna molestie vulputate bi um venenatis sit nisl nisi ultricies sed, fames aliquet consec quisque etiam egestas vulputate massa, curabitur tellus ma putate nisi viverra luctus id leo.</p>
-    </div>
-</div>
-
-
-
-
-    <div class="widget pad50-65">
-        <div class="widget-title2">
-            <h4>Contextual Classes Table</h4>
-        </div>
-
-        <table id="topreferrers" class="table table-inverse">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Column heading</th>
-                    <th>Column heading</th>
-                    <th>Column heading</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="bg-primary">
-                    <th scope="row">1</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                </tr>
-                <tr class="bg-success">
-                    <th scope="row">3</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                </tr>
-                <tr class="bg-info">
-                    <th scope="row">5</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                </tr>
-                <tr>
-                    <th scope="row">6</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                </tr>
-                <tr class="bg-warning">
-                    <th scope="row">7</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                </tr>
-                <tr>
-                    <th scope="row">8</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                </tr>
-                <tr class="bg-danger">
-                    <th scope="row">9</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-
-
-
-        <div class="col-md-6">
-          <!-- AREA CHART -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Visitor and Page View</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-              <div class="chart">
-                <canvas id="areaChart" style="height:250px"></canvas>
-              </div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-          <!-- DONUT CHART -->
-          <div class="box box-danger">
-            <div class="box-header with-border">
-              <h3 class="box-title">Browser</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-              <canvas id="pieChart" style="height:250px"></canvas>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-        </div>
-        <!-- /.col (LEFT) -->
-        <div class="col-md-6">
-          <!-- LINE CHART -->
-          <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Country</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-              <div class="chart">
-                <canvas id="lineChart" style="height:250px"></canvas>
-              </div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-          <!-- BAR CHART -->
-          <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title">Visitor and Page View</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-              <div class="chart">
-                <canvas id="barChart" style="height:230px"></canvas>
-              </div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-        </div>
-        <!-- /.col (RIGHT) -->
- 
- <h3>This Week vs Last Week</h3>
-   <canvas id="this_week_vs_last"></canvas>
-   <div id="this_week_vs_last_legend" class="chart-legend"></div>
-
-{{-- @include('partials.misc.4widgets') --}}
-{{-- {{$analyticsData->pageTitle}} --}}
-
-<code>
-{{-- {!! json_encode($country) !!}  --}}
-</code>
-{{-- {{ $topreferrers }} --}}
-<br />
-<div style="clear:both"></div>
-{{-- {{ json_encode($topreferrers) }} --}}
-
-
-{{-- {{ $topreferrers }} --}}
- 
-
-
-
-
-{{-- {{ $andata }} --}}
- 
 <div class="panel-content">
     <div class="filter-items">
         <div class="row grid-wrap mrg20">
@@ -373,6 +50,43 @@
             <div class="col-md-4 grid-item col-sm-6 col-lg-3"></div>
             <div class="col-md-4 grid-item col-sm-6 col-lg-3"></div>
             <div class="col-md-4 grid-item col-sm-6 col-lg-3"></div>
+
+
+            <div class="col-md-6 grid-item col-sm-12 col-lg-6">
+			    <div id="here" class="widget pad50-65">
+			            <div class="widget-title2">
+			                <h4>Top Refferers</h4>
+			            </div>
+
+			    </div>
+			    <script>
+			    var jArr =  {!! $topreferrers !!};
+			    var tableData = '<table id="topreferrers" class="table table-inverse">' +
+			        '<thead>' +
+			        '<tr>' +
+			        '<td>Referrer</td>' +
+			        '<td>Visits</td>' +
+			        '</tr>' +
+			        '</thead><tbody>';
+			    $.each(jArr, function(index, data) {
+			        tableData += '<tr><td>'+data.url+'</td><td>'+data.pageViews+'</td></tr>';
+
+			    });
+			    tableData += '</tbody>'
+			    $('div#here').append(tableData);
+			    // $( "tr" ).filter( ":even" ).css( "background-color", "red" );
+			    $('tr').each(function(){
+			        if($('td:contains("facebook")', this).length){
+			            $(this).addClass('bg-primary');
+			        }
+			    });
+			    $('tr').each(function(){
+			        if($('td:contains("google")', this).length){
+			            $(this).addClass('bg-success');
+			        }
+			    });
+			    </script>
+			</div>
 
 
             <div class="col-md-6 grid-item col-sm-12 col-lg-6">
@@ -460,14 +174,14 @@
                                                 <h4>07</h4>
                                                 <span>Urgent Tasks</span>
                                             </div>
-                                            <i class="ion-social-buffer blue-clr"></i>                            
+                                            <i class="ion-social-buffer blue-clr"></i>
                                         </div>
                                         <div class="prt-bx">
                                             <div class="prt-bx-inf">
                                                 <h4>05</h4>
                                                 <span>Normal Tasks</span>
                                             </div>
-                                            <i class="ion-ios-color-filter green-clr"></i>                            
+                                            <i class="ion-ios-color-filter green-clr"></i>
                                         </div>
                                     </div>
                                     <div id="chart5" style="height: 250px;"></div>
@@ -901,7 +615,7 @@ $(function() {
         },
         tooltip: {
             pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
-        },      
+        },
         plotOptions: {
             area: {
                 categories: ['1', '2', '3', '4', '5', '6', '7'],
@@ -925,7 +639,7 @@ $(function() {
     });
 
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-        
+
         $('#chrt3').highcharts({
             colors: ['#e8e9ec','#5be1ba'],
             chart: {
@@ -962,7 +676,7 @@ $(function() {
             },
             tooltip: {
                 pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
-            },      
+            },
             plotOptions: {
                 area: {
                     categories: ['1', '2', '3', '4', '5', '6', '7'],
@@ -1034,7 +748,7 @@ $(function() {
           itemHoverStyle: {
             color: '#fff'
           },
-       },      
+       },
         plotOptions: {
             area: {
                 categories: ['1', '2', '3', '4', '5', '6', '7'],
@@ -1192,7 +906,7 @@ $(function() {
     }
 
     $('.grid-item').draggable();
- 
+
   });
 </script>
 @endsection
@@ -1210,7 +924,7 @@ $(function() {
     var areaChart = new Chart(areaChartCanvas);
 
     var areaChartData = { labels: {!! json_encode($dates->map(function($date) { return $date->format('d/m'); })) !!},
-  
+
       datasets: [
         {
           label: "Page views",
@@ -1282,7 +996,7 @@ $(function() {
     //--------------
     var lineChartData = {
     labels:  {!! json_encode($country) !!} ,
-  
+
       datasets: [
         {
           label: "Visitors",

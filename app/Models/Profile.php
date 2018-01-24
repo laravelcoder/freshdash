@@ -157,11 +157,11 @@ class Profile extends Model
         use SoftDeletes;
 
     public $table = 'profiles';
-    
-    
+
+
     protected $dates = ['deleted_at'];
 
-    
+
     public $fillable = [
         'photo',
         'first_name',
@@ -228,7 +228,7 @@ class Profile extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     /**
@@ -236,7 +236,7 @@ class Profile extends Model
      **/
     public function user()
     {
-        return $this->hasOne(\App\Models\User::class);
+        return $this->belongsTo(\App\Models\User::class, 'id', 'user_id');
     }
 
     public function setUuid($uuid) {

@@ -48,7 +48,7 @@ Route::get('/r', function ()
         $pathToImage = public_path('images/ss/');
         $ss = \Spatie\Browsershot\Browsershot::url('https://www.affordableprogrammer.com')->fullPage()->save($pathToImage);
 
-       return $ss;
+      // return $ss;
 
     });
 /*
@@ -73,7 +73,7 @@ Auth::routes();
     Route::get('/analytical-dashboard', 'HomeController@anadash')->name('analytical-dashboard');
 
     Route::resource('users', 'UserController');
-    Route::get('/users-datatable', 'UserController@datatable')->name('users-datatable');
+
     Route::resource('profiles', 'ProfileController');
     Route::resource('websites', 'WebsiteController');
     Route::resource('clinics', 'ClinicController');
@@ -93,3 +93,7 @@ Route::resource('users', 'UserController');
 Route::resource('profiles', 'ProfileController');
 
 
+
+
+/* Instructors show */
+// Route::get('/instructors/show/{instructor}',['middleware'=>'check-permission:user|admin|superadmin','uses'=>'InstructorController@show']);
