@@ -91,14 +91,14 @@ class Location extends Model
         use SoftDeletes;
 
     public $table = 'locations';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
-    
+
     protected $dates = ['deleted_at'];
 
-    
+
     public $fillable = [
         'address',
         'address2',
@@ -143,8 +143,13 @@ class Location extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -168,5 +173,15 @@ class Location extends Model
     public function zipcodes()
     {
         return $this->hasMany(\App\Models\Zipcode::class);
+    }
+
+     /**
+     * @method product
+     * @public
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user() {
+        return $this->belongsToMany(User::class);
     }
 }

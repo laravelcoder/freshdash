@@ -16,13 +16,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          format="int32"
  *      ),
  *      @SWG\Property(
- *          property="number",
- *          description="number",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="name",
- *          description="name",
+ *          property="clinic_name",
+ *          description="clinic_name",
  *          type="string"
  *      ),
  *      @SWG\Property(
@@ -30,6 +25,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          description="device_count",
  *          type="integer",
  *          format="int32"
+ *      ),
+ *      @SWG\Property(
+ *          property="clinic_number",
+ *          description="clinic_number",
+ *          type="string"
  *      ),
  *      @SWG\Property(
  *          property="group_id",
@@ -62,18 +62,15 @@ class Clinic extends Model
         use SoftDeletes;
 
     public $table = 'clinics';
-    
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
 
-    
+
     protected $dates = ['deleted_at'];
 
-    
+
     public $fillable = [
-        'number',
-        'name',
+        'clinic_name',
         'device_count',
+        'clinic_number',
         'group_id',
         'date_opened',
         'quickbase_id',
@@ -86,10 +83,9 @@ class Clinic extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'integer',
-        'number' => 'string',
-        'name' => 'string',
+        'clinic_name' => 'string',
         'device_count' => 'integer',
+        'clinic_number' => 'string',
         'group_id' => 'integer',
         'date_opened' => 'date',
         'quickbase_id' => 'integer',
@@ -102,7 +98,7 @@ class Clinic extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     /**
@@ -128,4 +124,12 @@ class Clinic extends Model
     {
         return $this->hasMany(\App\Models\Zipcode::class);
     }
+
+    /**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 **/
+	public function analyticsclients()
+	{
+		return $this->hasMany(App\Models\Analyticsclient::class);
+	}
 }

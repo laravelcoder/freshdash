@@ -4,10 +4,10 @@
     <p>{!! $website->id !!}</p>
 </div>
 
-<!-- Name Field -->
+<!-- Website Name Field -->
 <div class="form-group">
-    {!! Form::label('name', 'Name:') !!}
-    <p>{!! $website->name !!}</p>
+    {!! Form::label('website_name', 'Website Name:') !!}
+    <p>{!! $website->website_name !!}</p>
 </div>
 
 <!-- Website Field -->
@@ -22,10 +22,10 @@
     <p>{!! $website->clinic_id !!}</p>
 </div>
 
-<!-- User Id Field -->
+<!-- Profile Id Field -->
 <div class="form-group">
-    {!! Form::label('user_id', 'User Id:') !!}
-    <p>{!! $website->user_id !!}</p>
+    {!! Form::label('profile_id', 'Profile Id:') !!}
+    <p>{!! $website->profile_id !!}</p>
 </div>
 
 <!-- Created At Field -->
@@ -38,11 +38,5 @@
 <div class="form-group">
     {!! Form::label('updated_at', 'Updated At:') !!}
     <p>{!! $website->updated_at !!}</p>
-</div>
-
-<!-- Deleted At Field -->
-<div class="form-group">
-    {!! Form::label('deleted_at', 'Deleted At:') !!}
-    <p>{!! $website->deleted_at !!}</p>
 </div>
 

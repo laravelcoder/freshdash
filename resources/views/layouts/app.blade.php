@@ -21,6 +21,7 @@
     {{-- <link rel="stylesheet" href="{!! asset('/css/color-schemes/color.css') !!}" type="text/css" title="color3"> --}}
     {{-- <link rel="alternate stylesheet" href="{!! asset('/css/color-schemes/color1.css') !!}" title="color1"> --}}
     <link rel="alternate stylesheet" href="{!! asset('/css/color-schemes/color2.css') !!}" title="color2">
+    <link rel="alternate stylesheet" href="{!! asset('/css/fileinput.css') !!}" title="color2">
     {{-- <link rel="alternate stylesheet" href="{!! asset('/css/color-schemes/color4.css') !!}" title="color4"> --}}
     {{-- <link rel="alternate stylesheet" href="{!! asset('/css/color-schemes/color5.css') !!}" title="color5"> --}}
 
@@ -36,13 +37,13 @@
 
     @yield('content')
 
-    
+
     </div>
      <div style="clear:both"></div>
- 
+
     @include('templates/footer')
 
-    @yield('scripts')
+
 
     <!-- Vendor: Angular, followed by our custom Javascripts -->
     <script src="{!! asset('/js/angular.min.js') !!}" type="text/javascript"></script>
@@ -54,7 +55,11 @@
     <script src="{!! asset('/js/select2.min.js') !!}" type="text/javascript"></script>
     <script src="{!! asset('/js/slick.min.js') !!}" type="text/javascript"></script>
 
+        @yield('scripts')
+
     <!-- Our Website Javascripts -->
+    <script src="{!! asset('/js/fileinput.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('/js/summernote.min.js') !!}" type="text/javascript"></script>
     <script src="{!! asset('/js/isotope.min.js') !!}" type="text/javascript"></script>
     <script src="{!! asset('/js/isotope-int.js') !!}" type="text/javascript"></script>
     <script src="{!! asset('/js/jquery.counterup.js') !!}" type="text/javascript"></script>
@@ -105,7 +110,15 @@
     <script src="{!! asset('/js/ion.rangeSlider.min.js') !!}" type="text/javascript"></script>
     <script src="{!! asset('/js/jquery.poptrox.min.js') !!}" type="text/javascript"></script>
     <script src="{!! asset('/js/styleswitcher.js') !!}" type="text/javascript"></script>
-    <script src="{!! asset('//maps.google.com/maps/api/js?sensor=false') !!}"></script>
+    {{-- <script src="{!! asset('//maps.google.com/maps/api/js?sensor=false') !!}"></script> --}}
     <script src="{!! asset('/js/main.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('/js/repeatable-fields.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('/js/autosize.min.js') !!}" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/highcharts-more.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script>
+		autosize(document.querySelectorAll('textarea'));
+	</script>
 </body>
 </html>

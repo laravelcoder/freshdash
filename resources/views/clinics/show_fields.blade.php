@@ -4,22 +4,22 @@
     <p>{!! $clinic->id !!}</p>
 </div>
 
-<!-- Number Field -->
+<!-- Clinic Name Field -->
 <div class="form-group">
-    {!! Form::label('number', 'Number:') !!}
-    <p>{!! $clinic->number !!}</p>
-</div>
-
-<!-- Name Field -->
-<div class="form-group">
-    {!! Form::label('name', 'Name:') !!}
-    <p>{!! $clinic->name !!}</p>
+    {!! Form::label('clinic_name', 'Clinic Name:') !!}
+    <p>{!! $clinic->clinic_name !!}</p>
 </div>
 
 <!-- Device Count Field -->
 <div class="form-group">
     {!! Form::label('device_count', 'Device Count:') !!}
     <p>{!! $clinic->device_count !!}</p>
+</div>
+
+<!-- Clinic Number Field -->
+<div class="form-group">
+    {!! Form::label('clinic_number', 'Clinic Number:') !!}
+    <p>{!! $clinic->clinic_number !!}</p>
 </div>
 
 <!-- Group Id Field -->

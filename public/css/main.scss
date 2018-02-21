@@ -4843,6 +4843,8 @@ footer {
 	float: left;
 	padding: 20px 60px 14px 340px;
 	width: 100%;
+	position: fixed;
+	bottom: 0;
 	> p {
 		@extend %extend_11;
 		a {

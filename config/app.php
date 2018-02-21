@@ -167,6 +167,9 @@ return [
         /*
          * Package Service Providers...
          */
+        Edujugon\GoogleAds\Providers\GoogleAdsServiceProvider::class,
+        \JK\LaraChartie\ChartieServiceProvider::class,
+        Aivo\Highchart\HighchartServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -176,6 +179,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+
 
     ],
 
@@ -225,6 +230,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Input'     => Illuminate\Support\Facades\Input::class,
+        'GoogleAds' => Edujugon\GoogleAds\Facades\GoogleAds::class,
+        'Chartie' => JK\LaraChartie\Facades\Chart::class,
 
     ],
 

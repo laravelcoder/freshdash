@@ -73,7 +73,7 @@ class LocationController extends AppBaseController
      */
     public function show($id)
     {
-        $location = $this->locationRepository->findWithoutFail($id);
+        $location = $this->locationRepository->findWithoutFail($location->id);
 
         if (empty($location)) {
             Flash::error('Location not found');
@@ -93,7 +93,7 @@ class LocationController extends AppBaseController
      */
     public function edit($id)
     {
-        $location = $this->locationRepository->findWithoutFail($id);
+        $location = $this->locationRepository->findWithoutFail($location->id);
 
         if (empty($location)) {
             Flash::error('Location not found');
@@ -114,7 +114,7 @@ class LocationController extends AppBaseController
      */
     public function update($id, UpdateLocationRequest $request)
     {
-        $location = $this->locationRepository->findWithoutFail($id);
+        $location = $this->locationRepository->findWithoutFail($location->id);
 
         if (empty($location)) {
             Flash::error('Location not found');
@@ -138,7 +138,7 @@ class LocationController extends AppBaseController
      */
     public function destroy($id)
     {
-        $location = $this->locationRepository->findWithoutFail($id);
+        $location = $this->locationRepository->findWithoutFail($location->id);
 
         if (empty($location)) {
             Flash::error('Location not found');

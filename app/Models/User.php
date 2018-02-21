@@ -6,6 +6,7 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\User as Usermodel;
 
+
 /**
  * @SWG\Definition(
  *      definition="User",
@@ -139,38 +140,54 @@ class User extends Usermodel
 	 **/
 	public function profile()
 	{
-		return $this->hasOne(\App\Models\Profile::class);
+		return $this->hasOne(\App\Models\Profile::class, 'id', 'profile_id');
 	}
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 **/
-	public function userLocation()
+	public function userlocations()
 	{
 		return $this->hasMany(App\Models\Location::class);
 	}
 
-	/**
-	 * Generates the value for the User::confirmation_code field. Used to
-	 * activate the user's account.
-	 * @return bool
-	 */
-	// public function generateConfirmationCode()
-	// {
-	// 	$this->attributes['confirmation_code'] = \Hash::make( $this->email . time() );
-	// 	$this->attributes['username'] = studly_case($this->name);
+    public function locations() {
+        return $this->hasMany(locations::class);
+    }
 
-	// 	if( is_null($this->attributes['confirmation_code']) )
-	// 		return false; // failed to create confirmation_code
-	// 	else
-	// 		return true;
-	// }
+    /**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 **/
+	public function analyticsclients()
+	{
+		return $this->hasMany(App\Models\Analyticsclient::class, 'user_id', 'id');
+	}
 
+    /**
+     * Generates the value for the User::confirmation_code field. Used to
+     * activate the user's account.
+     * @return bool
+     */
+    public function generateConfirmationCode()
+    {
+        $this->attributes['confirmation_code'] = \Hash::make( $this->email . time() );
+        $this->attributes['username'] = studly_case($this->name);
+
+        if( is_null($this->attributes['confirmation_code']) )
+            return false; // failed to create confirmation_code
+        else
+            return true;
+    }
+
+    public function location() {
+        return $this->belongsTo(Location::class, 'location_user', 'user_id', 'location_id');
+    }
 
 	public function getConfirmationCodeAttribute()
     {
         return \Hash::make( $this->email . time() );
     }
+
 
 
 }

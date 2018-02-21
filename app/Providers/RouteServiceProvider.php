@@ -26,6 +26,15 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+
+        // Route::model('user', App\Models\User::class);
+        // Route::model('website', App\Models\Website::class);
+        // Route::model('location', App\Models\Location::class);
+        // Route::model('clinic', App\Models\Clinic::class);
+        // Route::model('zipcode', App\Models\Zipcode::class);
+        // Route::model('analyticsclient', App\Models\Analyticsclient::class);
+        // Route::model('adsclient', App\Models\Adsclient::class);
+
     }
 
     /**
@@ -69,6 +78,6 @@ class RouteServiceProvider extends ServiceProvider
             ->middleware('api')
             ->as('api.')
             ->namespace($this->namespace."\\API")
-            ->group(base_path('routes/api.php'));  
+            ->group(base_path('routes/api.php'));
     }
 }

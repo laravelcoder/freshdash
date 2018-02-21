@@ -38,7 +38,7 @@ Route::get('/r', function ()
 
     /****************   Model binding into route **************************/
 
-    Route::model('user', 'App\Models\User');
+    Route::model('user', App\Models\User::class);
     Route::pattern('id', '[0-9]+');
     Route::pattern('slug', '[0-9a-z-_]+');
 
@@ -79,21 +79,29 @@ Auth::routes();
     Route::resource('clinics', 'ClinicController');
     Route::resource('locations', 'LocationController');
     Route::resource('zipcodes', 'ZipcodeController');
-
-Route::resource('zipcodes', 'ZipcodeController');
-
-Route::resource('locations', 'LocationController');
-
-Route::resource('clinics', 'ClinicController');
-
-Route::resource('websites', 'WebsiteController');
-
-Route::resource('users', 'UserController');
-
-Route::resource('profiles', 'ProfileController');
+    Route::resource('pages', 'PageController');
+	Route::get('{page}', ['as' => 'pages.show', 'uses' => 'PageController@show']);
 
 
+Route::post('/users/{user}/website', 'WebsiteController@store');
 
 
 /* Instructors show */
 // Route::get('/instructors/show/{instructor}',['middleware'=>'check-permission:user|admin|superadmin','uses'=>'InstructorController@show']);
+
+
+
+Route::resource('analyticsclients', 'AnalyticsclientController');
+
+Route::resource('adsclients', 'AdsclientController');
+
+Route::get('/toprefs/read-data', 'HomeController@readTopRef');
+
+Route::get('/getRequest', function(){
+    if(Request::ajax()){
+        return 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.<br />';
+    }
+});
+
+
+Route::get('us', 'UserController@progress');

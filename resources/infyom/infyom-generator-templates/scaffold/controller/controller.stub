@@ -71,7 +71,7 @@ class $MODEL_NAME$Controller extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
+    public function show($MODEL_NAME$ $$MODEL_NAME_CAMEL$)
     {
         $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
 
@@ -91,7 +91,7 @@ class $MODEL_NAME$Controller extends AppBaseController
      *
      * @return Response
      */
-    public function edit($id)
+    public function edit($MODEL_NAME$ $$MODEL_NAME_CAMEL$)
     {
         $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
 
@@ -136,7 +136,7 @@ class $MODEL_NAME$Controller extends AppBaseController
      *
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($MODEL_NAME$ $$MODEL_NAME_CAMEL$)
     {
         $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
 

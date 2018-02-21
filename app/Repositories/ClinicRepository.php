@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class ClinicRepository
  * @package App\Repositories
- * @version January 18, 2018, 5:06 am UTC
+ * @version January 31, 2018, 1:21 am UTC
  *
  * @method Clinic findWithoutFail($id, $columns = ['*'])
  * @method Clinic find($id, $columns = ['*'])
@@ -20,9 +20,9 @@ class ClinicRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'number',
-        'name',
+        'clinic_name',
         'device_count',
+        'clinic_number',
         'group_id',
         'date_opened',
         'quickbase_id',

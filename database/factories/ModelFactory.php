@@ -122,3 +122,44 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\Adsclient::class, function (Faker\Generator $faker) {
+    return [
+        'developer_token' => $faker->word,
+        'client_customer_id' => $faker->word,
+        'user_agent' => $faker->word,
+        'client_id' => $faker->word,
+        'client_secret' => $faker->word,
+        'refresh_token' => $faker->word,
+        'authorization_uri' => $faker->word,
+        'redirect_uri' => $faker->word,
+        'token_credential_uri' => $faker->word,
+        'scope' => $faker->word,
+        'website_id' => function () {
+             return factory(App\Models\Website::class)->create()->id;
+        },
+        'user_id' => $faker->randomNumber(),
+        'clinic_id' => function () {
+             return factory(App\Models\Clinic::class)->create()->id;
+        },
+        'id' => function () {
+             return factory(App\Models\User::class)->create()->id;
+        },
+    ];
+});
+
+$factory->define(App\Models\Analyticsclient::class, function (Faker\Generator $faker) {
+    return [
+        'view_id' => $faker->randomNumber(),
+        'user_id' => function () {
+             return factory(App\Models\User::class)->create()->id;
+        },
+        'clinic_id' => function () {
+             return factory(App\Models\Clinic::class)->create()->id;
+        },
+        'website_id' => function () {
+             return factory(App\Models\Website::class)->create()->id;
+        },
+        'view_url' => $faker->word,
+    ];
+});
+

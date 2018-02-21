@@ -5,7 +5,9 @@ return [
     /*
      * The view id of which you want to display data.
      */
-    'view_id' => '117039068',
+    'view_id' => '117039068', // www.liceclinicsofamerica.com
+    // 'view_id' => '128721343', // www.liceclinicscleveland.com
+    //'view_id' => '131207483', // www.liceclinicshawaii.com
     // 'view_id' => env('ANALYTICS_VIEW_ID'),
 
     /*

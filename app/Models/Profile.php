@@ -232,11 +232,16 @@ class Profile extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
     public function user()
     {
-        return $this->belongsTo(\App\Models\User::class, 'id', 'user_id');
+        return $this->belongsTo(\App\Models\User::class, 'user_id', 'id');
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
     }
 
     public function setUuid($uuid) {
@@ -248,12 +253,25 @@ class Profile extends Model
         return $this->first_name.' '.$this->last_name;
     }
 
+    public function profile()
+    {
+        return $this->belongsTo(\App\Models\User::class, 'user_id');
+    }
 
+    public function websites()
+    {
+        return $this->hasMany(\App\Models\Website::class);
+    }
 
     public function GetSlugAttribute()
     {
-        return str_slug($this->name, "-");
+        return str_slug($this->first_name . $this->last_name, "-");
     }
+
+	public function getNameAttribute()
+	{
+		return $this->first_name .' '. $this->last_name;
+	}
 
     public function getDobAttribute($value) {
         if ($value == '0000-00-00 00:00:00') {
