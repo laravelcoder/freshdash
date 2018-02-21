@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="text-center">
-        
+
         </div>
      </div><!-- Panel Content -->
 @endsection

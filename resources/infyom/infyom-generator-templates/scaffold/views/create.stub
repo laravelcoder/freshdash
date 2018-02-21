@@ -11,10 +11,10 @@
 
     <div class="panel-content">
 
-                    {!! Form::open(['route' => '$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.store']) !!}
-
+                    {!! Form::open(['route' => '$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.store', 'class' => 'form-wrp']) !!}
+<div class="row mrg20">
                         @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.fields')
-
+</div>
                     {!! Form::close() !!}
                 </div>
             </div>

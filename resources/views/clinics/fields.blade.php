@@ -1,43 +1,28 @@
-<!-- Number Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('number', 'Number:') !!}
-    {!! Form::text('number', null, ['class' => 'form-control']) !!}
+<!-- Clinic Name Field -->
+<div class="form-group col-md-6 col-sm-6 col-lg-6">
+    {!! Form::label('clinic_name', 'Clinic Name:') !!}
+    {!! Form::text('clinic_name', null, ['id' => 'inputclinic_name', 'class' => 'brd-rd5', 'placeholder' => 'Clinic Name']) !!}
 </div>
 
-<!-- Name Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('name', 'Name:') !!}
-    {!! Form::text('name', null, ['class' => 'form-control']) !!}
-</div>
 
 <!-- Device Count Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-md-6 col-sm-6 col-lg-6">
     {!! Form::label('device_count', 'Device Count:') !!}
-    {!! Form::number('device_count', null, ['class' => 'form-control']) !!}
+    {!! Form::text('device_count', null, ['id' => 'inputdevice_count', 'class' => 'brd-rd5', 'placeholder' => 'Device Count']) !!}
 </div>
 
-<!-- Group Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('group_id', 'Group Id:') !!}
-    {!! Form::number('group_id', null, ['class' => 'form-control']) !!}
+
+<!-- Clinic Number Field -->
+<div class="form-group col-md-6 col-sm-6 col-lg-6">
+    {!! Form::label('clinic_number', 'Clinic Number:') !!}
+    {!! Form::text('clinic_number', null, ['id' => 'inputclinic_number', 'class' => 'brd-rd5', 'placeholder' => 'Clinic Number']) !!}
 </div>
+
 
 <!-- Date Opened Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('date_opened', 'Date Opened:') !!}
     {!! Form::date('date_opened', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Quickbase Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('quickbase_id', 'Quickbase Id:') !!}
-    {!! Form::number('quickbase_id', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Quickbase Company Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('quickbase_company', 'Quickbase Company:') !!}
-    {!! Form::number('quickbase_company', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

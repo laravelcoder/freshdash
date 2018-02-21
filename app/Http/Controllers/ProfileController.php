@@ -43,6 +43,8 @@ class ProfileController extends AppBaseController
      */
     public function create()
     {
+
+
         return view('profiles.create');
     }
 
@@ -55,6 +57,7 @@ class ProfileController extends AppBaseController
      */
     public function store(CreateProfileRequest $request)
     {
+
         $input = $request->all();
 
         $profile = $this->profileRepository->create($input);

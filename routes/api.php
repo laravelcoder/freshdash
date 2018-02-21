@@ -45,3 +45,13 @@ $router->get('/tr', function()
     // return response()->json($topreferrers); 
   // 
 });
+
+Route::resource('clinics', 'ClinicAPIController');
+
+Route::resource('clinics', 'ClinicAPIController');
+
+Route::resource('analyticsclients', 'AnalyticsclientAPIController');
+
+Route::resource('adsclients', 'AdsclientAPIController');
+
+Route::resource('pages', 'PageAPIController');

@@ -11,10 +11,10 @@
 
     <div class="panel-content">
 
-                    {!! Form::open(['route' => 'websites.store']) !!}
-
+                    {!! Form::open(['route' => 'websites.store', 'class' => 'form-wrp']) !!}
+<div class="row mrg20">
                         @include('websites.fields')
-
+</div>
                     {!! Form::close() !!}
                 </div>
             </div>

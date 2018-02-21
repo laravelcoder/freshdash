@@ -6,6 +6,7 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\User as Usermodel;
 
+
 /**
  * @SWG\Definition(
  *      definition="User",
@@ -84,70 +85,83 @@ use App\User as Usermodel;
  */
 class User extends Usermodel
 {
-        use SoftDeletes;
+		use SoftDeletes;
 
-    public $table = 'users';
-    
-    
-    protected $dates = ['deleted_at'];
+	public $table = 'users';
 
-    
-    public $fillable = [
-        'name',
-        'email',
-        'username',
-        'user_visits',
-        'confirmation_code',
-        'confirmed',
-        'admin',
-        'password',
-        'remember_token',
-        'deleted_at',
-        'profile_id'
-    ];
 
-    /**
-     * The attributes that should be casted to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'name' => 'string',
-        'email' => 'string',
-        'username' => 'string',
-        'user_visits' => 'integer',
-        'profile_id' => 'integer',
-        'confirmation_code' => 'string',
-        'confirmed' => 'boolean',
-        'admin' => 'boolean',
-        'password' => 'string',
-        'remember_token' => 'string'
-    ];
+	protected $dates = ['deleted_at'];
 
-    /**
-     * Validation rules
-     *
-     * @var array
-     */
-    public static $rules = [
-        
-    ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     **/
-    public function profile()
-    {
-        return $this->hasOne(\App\Models\Profile::class);
+	public $fillable = [
+
+		'name',
+		'email',
+		'username',
+		'user_visits',
+		'confirmation_code',
+		'confirmed',
+		'admin',
+		'password',
+		'remember_token',
+		'deleted_at',
+		'profile_id'
+	];
+
+	/**
+	 * The attributes that should be casted to native types.
+	 *
+	 * @var array
+	 */
+	protected $casts = [
+		'name' => 'string',
+		'email' => 'string',
+		'username' => 'string',
+		'user_visits' => 'integer',
+		'profile_id' => 'integer',
+		'confirmation_code' => 'string',
+		'confirmed' => 'boolean',
+		'admin' => 'boolean',
+		'password' => 'string',
+		'remember_token' => 'string'
+	];
+
+	/**
+	 * Validation rules
+	 *
+	 * @var array
+	 */
+	public static $rules = [
+
+	];
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 **/
+	public function profile()
+	{
+		return $this->hasOne(\App\Models\Profile::class, 'id', 'profile_id');
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 **/
+	public function userlocations()
+	{
+		return $this->hasMany(App\Models\Location::class);
+	}
+
+    public function locations() {
+        return $this->hasMany(locations::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
-    public function userLocation()
-    {
-        return $this->hasMany('App\Models\Location');
-    }
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 **/
+	public function analyticsclients()
+	{
+		return $this->hasMany(App\Models\Analyticsclient::class, 'user_id', 'id');
+	}
 
     /**
      * Generates the value for the User::confirmation_code field. Used to
@@ -164,6 +178,16 @@ class User extends Usermodel
         else
             return true;
     }
+
+    public function location() {
+        return $this->belongsTo(Location::class, 'location_user', 'user_id', 'location_id');
+    }
+
+	public function getConfirmationCodeAttribute()
+    {
+        return \Hash::make( $this->email . time() );
+    }
+
 
 
 }

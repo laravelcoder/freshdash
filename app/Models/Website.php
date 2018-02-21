@@ -16,8 +16,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          format="int32"
  *      ),
  *      @SWG\Property(
- *          property="name",
- *          description="name",
+ *          property="website_name",
+ *          description="website_name",
  *          type="string"
  *      ),
  *      @SWG\Property(
@@ -32,8 +32,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          format="int32"
  *      ),
  *      @SWG\Property(
- *          property="user_id",
- *          description="user_id",
+ *          property="profile_id",
+ *          description="profile_id",
  *          type="integer",
  *          format="int32"
  *      )
@@ -44,19 +44,16 @@ class Website extends Model
         use SoftDeletes;
 
     public $table = 'websites';
-    
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
 
-    
+
     protected $dates = ['deleted_at'];
 
-    
+
     public $fillable = [
-        'name',
+        'website_name',
         'website',
         'clinic_id',
-        'user_id'
+        'profile_id'
     ];
 
     /**
@@ -65,11 +62,10 @@ class Website extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'integer',
-        'name' => 'string',
+        'website_name' => 'string',
         'website' => 'string',
         'clinic_id' => 'integer',
-        'user_id' => 'integer'
+        'profile_id' => 'integer'
     ];
 
     /**
@@ -78,14 +74,38 @@ class Website extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    **/
     public function clinic()
     {
         return $this->belongsTo(\App\Models\Clinic::class);
+    }
+
+    /**
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    **/
+    public function profile()
+    {
+        return $this->belongsTo(\App\Models\Profile::class);
+    }
+
+    /**
+    * @return \Illuminate\Database\Eloquent\Relations\HasOne
+    **/
+    public function analyticsclient()
+    {
+        return $this->hasOne(\App\Models\Analyticsclient::class);
+    }
+
+    /**
+    * @return \Illuminate\Database\Eloquent\Relations\HasOne
+    **/
+    public function adsclient()
+    {
+        return $this->hasOne(\App\Models\Adsclient::class);
     }
 }

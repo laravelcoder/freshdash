@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('profile_id')->nullable();
             $table->integer('quickbase_id')->unique()->nullable();
             $table->integer('quickbase_company')->unsigned()->nullable();
+
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
