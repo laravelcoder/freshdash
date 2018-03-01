@@ -14,3 +14,4 @@ yarn-error.log
 *.zip
 /.phpintel
 /composer.lock
+config/google-ads.php
