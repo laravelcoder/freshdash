@@ -53,25 +53,25 @@ class HomeController extends Controller
 	 */
 	public function dash()
 	{
-		$ads = new GoogleAds();
+		//$ads = new GoogleAds();
 		// $ads->service(AdGroupService::class);
 
-		$ads->service(CampaignService::class)->select(['Id', 'Name', 'Status', 'ServingStatus', 'StartDate', 'EndDate'])->get();
-		$obj = $this->ads->report()
-            ->from('CRITERIA_PERFORMANCE_REPORT')
-            ->during('20170101','20170210')
-            ->where('CampaignId = 752331963')
-            ->select('CampaignId','AdGroupId','AdGroupName','Id', 'Criteria', 'CriteriaType','Impressions', 'Clicks', 'Cost', 'UrlCustomParameters')
-            ->getAsObj();
+		//$ads->service(CampaignService::class)->select(['Id', 'Name', 'Status', 'ServingStatus', 'StartDate', 'EndDate'])->get();
+		// $obj = $this->ads->report()
+		//             ->from('CRITERIA_PERFORMANCE_REPORT')
+		//             ->during('20170101','20170210')
+		//             ->where('CampaignId = 752331963')
+		//             ->select('CampaignId','AdGroupId','AdGroupName','Id', 'Criteria', 'CriteriaType','Impressions', 'Clicks', 'Cost', 'UrlCustomParameters')
+		//             ->getAsObj();
 
 
-		$fields = $this->ads->fields()->of('AD_PERFORMANCE_REPORT')->asList();
+		//$fields = $this->ads->fields()->of('AD_PERFORMANCE_REPORT')->asList();
 		// $ads->service(CampaignService::class);
 		// Analytics::getAnalyticsService();
 		// $latestuser = User::where('user_id', Auth::id())->latest();
 		// $latestuser = User::orderBy('created_at', 'desc')->last();
 		$latestuser = User::latest()->first()->created_at;
-		$analyticsData = \Analytics::fetchVisitorsAndPageViews(Period::days(7));
+		$analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(7));
 		$analyticsData_one = Analytics::fetchTotalVisitorsAndPageViews(Period::days(14));
 		$this->data['dates'] = $analyticsData_one->pluck('date');
 		$this->data['visitors'] = $analyticsData_one->pluck('visitors');
@@ -81,10 +81,7 @@ class HomeController extends Controller
 
 		// $news = News::where('category_id',$categoryID)->where('id', '>=', 10)->limit(10)->get();
 
-		$topref = array_values(array_sort($topreferrers, function($value)
-		{
-			return $value['url'];
-		}));
+		$topref = array_values(array_sort($topreferrers, function($value){	return $value['url']; }));
 
 		// dd($topreferrers->toArray());
 		 // dd($topreferrers);
