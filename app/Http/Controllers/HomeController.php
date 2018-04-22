@@ -53,19 +53,20 @@ class HomeController extends Controller
 	 */
 	public function dash()
 	{
-		//$ads = new GoogleAds();
-		// $ads->service(AdGroupService::class);
 
-		//$ads->service(CampaignService::class)->select(['Id', 'Name', 'Status', 'ServingStatus', 'StartDate', 'EndDate'])->get();
-		//$obj = $this->ads->report()
-		//     ->from('CRITERIA_PERFORMANCE_REPORT')
-		//     ->during('20170101','20170210')
-		//     ->where('CampaignId = 752331963')
-		//     ->select('CampaignId','AdGroupId','AdGroupName','Id', 'Criteria', 'CriteriaType','Impressions', 'Clicks', 'Cost', 'UrlCustomParameters')
-		//     ->getAsObj();
+		// $ads = new GoogleAds();
+		// // $ads->service(AdGroupService::class);
+
+		// $ads->service(CampaignService::class)->select(['Id', 'Name', 'Status', 'ServingStatus', 'StartDate', 'EndDate'])->get();
+		// $obj = $this->ads->report()
+		// 	->from('CRITERIA_PERFORMANCE_REPORT')
+		// 	->during('20170101','20170210')
+		// 	->where('CampaignId = 752331963')
+		// 	->select('CampaignId','AdGroupId','AdGroupName','Id', 'Criteria', 'CriteriaType','Impressions', 'Clicks', 'Cost', 'UrlCustomParameters')
+		// 	->getAsObj();
 
 
-		//$fields = $this->ads->fields()->of('AD_PERFORMANCE_REPORT')->asList();
+		// $fields = $this->ads->fields()->of('AD_PERFORMANCE_REPORT')->asList();
 		// $ads->service(CampaignService::class);
 		// Analytics::getAnalyticsService();
 		// $latestuser = User::where('user_id', Auth::id())->latest();
@@ -204,6 +205,15 @@ class HomeController extends Controller
 		/* $this->data['three_pageViews'] = $analyticsData_three->pluck('pageViews'); */
 
 		$analyticsdata_mvp = Analytics::fetchMostVisitedPages(Period::days(14));
+                $page_chart[0] = array('Page','Pageviews');
+                foreach($analyticsdata_mvp as $row){
+                    $page_chart[] = array($row['url'],(int)$row['pageViews']);
+                }
+                
+                $referrer_chart[0] = array('Page','Pageviews');
+                foreach($topreferrers as $row){
+                    $referrer_chart[] = array($row['url'],(int)$row['pageViews']);
+                }
 		$this->data['url'] = $analyticsdata_mvp->pluck('url');
 		$this->data['pageTitle '] = $analyticsdata_mvp->pluck('pageTitle');
 		$this->data['pageViews'] = $analyticsdata_mvp->pluck('pageViews');
@@ -213,8 +223,20 @@ class HomeController extends Controller
 		$result = GoogleAnalytics::country();
 		$this->data['country'] = $result->pluck('country');
 		$this->data['country_sessions'] = $result->pluck('sessions');
+                
+                $groupBy = 'date';
+                $column_type = 'date';
+                $column_name = 'Date';
+                $column_format = 'M/d';
+                $visitors_chart = $pageviews_chart = array();
+                if(count($analyticsdata_one) > 0){
+                    foreach($analyticsdata_one as $row){
+                        $visitors_chart[] = array('%%new Date('.$row[$groupBy]->format('Y, m-1, d, H').') %%',(int)$row['visitors']);
+                        $pageviews_chart[] = array('%%new Date('.$row[$groupBy]->format('Y, m-1, d, H').') %%',(int)$row['pageViews']);
+                    }
+                }
 
-		return view('partials.analytical-dashboard', compact('updated','latestuser','getusertoday','analyticsData', 'topreferrers', 'andata', 'analyticsdata', 'analyticsdata_one', 'analyticsdata_mvp'), $this->data);;
+		return view('partials.analytical-dashboard', compact('updated','latestuser','getusertoday','analyticsData', 'topreferrers', 'andata', 'analyticsdata', 'analyticsdata_one', 'analyticsdata_mvp', 'page_chart', 'referrer_chart', 'visitors_chart', 'pageviews_chart', 'column_type', 'column_name', 'column_format'), $this->data);;
 	}
 
 	public function readTopRef()
