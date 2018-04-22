@@ -29,6 +29,7 @@
 
 		<!-- Vendor: Javascripts -->
 	<script src="{!! asset('/js/jquery.min.js') !!}" type="text/javascript"></script>
+	@yield('topscripts')
 </head>
 <body class="dark">
 	@include('templates/header')

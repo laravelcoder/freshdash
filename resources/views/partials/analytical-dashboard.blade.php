@@ -1,5 +1,103 @@
 @extends('layouts.app')
 
+@section('topscripts')
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawChartVisitors);
+
+    function drawChartVisitors() {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('{{$column_type}}', '{{$column_name}}');
+        data.addColumn('number', 'Visitors');
+        <?php 
+            $json=json_encode($visitors_chart);
+            $json = preg_replace("/(('|\")%%|%%(\"|'))/",'', $json);
+        ?>
+        data.addRows(<?=$json?>);
+
+        var options = {
+            hAxis: {
+                title: '{{$column_name}}',
+                format: '{{$column_format}}'
+            },
+            vAxis: {
+                title: 'Visitors',
+                format: '#',
+            },
+            chartArea: {right: 0, width: '90%', height: '80%'}
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div_visitors'));
+
+        chart.draw(data, options);
+    }
+</script>
+<script type="text/javascript">
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawChartPageviews);
+
+    function drawChartPageviews() {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('{{$column_type}}', '{{$column_name}}');
+        data.addColumn('number', 'Pageviews');
+        <?php 
+            $json=json_encode($pageviews_chart);
+            $json = preg_replace("/(('|\")%%|%%(\"|'))/",'', $json);
+        ?>
+        data.addRows(<?=$json?>);
+
+        var options = {
+            hAxis: {
+                title: '{{$column_name}}',
+                format: '{{$column_format}}'
+            },
+            vAxis: {
+                title: 'Pageviews',
+                format: '#',
+            },
+            chartArea: {right: 0, width: '90%', height: '80%'}
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div_pageviews'));
+
+        chart.draw(data, options);
+    }
+</script>
+<script type="text/javascript">
+    google.charts.load("current", {packages: ["corechart"]});
+    google.charts.setOnLoadCallback(drawChartPage);
+    function drawChartPage() {
+        var data = google.visualization.arrayToDataTable(<?= json_encode($page_chart) ?>);
+
+        var options = {
+            is3D: true,
+            chartArea: {left: 0, top: 0, width: '100%', height: '100%'}
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_page'));
+        chart.draw(data, options);
+    }
+</script>
+<script type="text/javascript">
+    google.charts.load("current", {packages: ["corechart"]});
+    google.charts.setOnLoadCallback(drawChartPage);
+    function drawChartPage() {
+        var data = google.visualization.arrayToDataTable(<?= json_encode($referrer_chart) ?>);
+
+        var options = {
+            is3D: true,
+            chartArea: {left: 0, top: 0, width: '100%', height: '100%'}
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_referrers'));
+        chart.draw(data, options);
+    }
+</script>
+@endsection
+
 @section('content')
 <div class="pg-tp">
     <i class="ion-cube"></i>
@@ -12,8 +110,38 @@
 <div class="panel-content">
     <div class="filter-items">
         <div class="row grid-wrap mrg20">
-
-        	{!! $analyticsdata_mvp !!}
+            <div class="col-md-6 grid-item col-sm-12 col-lg-6">
+                <div>
+                    <h4>Visitors </h4>
+                </div>
+                <div id="here" class="widget" style="background: #fff;">
+                        <div id="chart_div_visitors" style="width: 100%; height: 305px;"></div>
+                </div>
+            </div>
+            <div class="col-md-6 grid-item col-sm-12 col-lg-6">
+                <div>
+                    <h4>Pageviews </h4>
+                </div>
+                <div id="here" class="widget" style="background: #fff;">
+                        <div id="chart_div_pageviews" style="width: 100%; height: 305px;"></div>
+                </div>
+            </div>
+            <div class="col-md-6 grid-item col-sm-12 col-lg-6">
+                <div>
+                    <h4>Top Pages </h4>
+                </div>
+                <div id="here" class="widget" style="background: #fff;">
+                        <div id="piechart_3d_page" style="width: 100%; height: 305px;"></div>
+                </div>
+            </div>
+            <div class="col-md-6 grid-item col-sm-12 col-lg-6">
+                <div>
+                    <h4>Top Referrers </h4>
+                </div>
+                <div id="here" class="widget" style="background: #fff;">
+                        <div id="piechart_3d_referrers" style="width: 100%; height: 305px;"></div>
+                </div>
+            </div>
 
       {{--       <div class="col-md-6 grid-item col-sm-12 col-lg-6">
                 <div class="wdgt-opt">
