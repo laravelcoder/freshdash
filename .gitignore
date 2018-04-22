@@ -17,3 +17,5 @@ yarn-error.log
 /composer.lock
 /config/google-ads.php
 *.lock
+/not
+/not/*
